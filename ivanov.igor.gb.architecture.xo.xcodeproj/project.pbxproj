@@ -32,17 +32,20 @@
 		1672065C250EAACB0013DF45 /* PlayerEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1672065B250EAACB0013DF45 /* PlayerEnum.swift */; };
 		1672065F250EAAF10013DF45 /* Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1672065E250EAAF10013DF45 /* Alias.swift */; };
 		16720662250EAB2F0013DF45 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16720661250EAB2F0013DF45 /* Board.swift */; };
-		16720664250EABEE0013DF45 /* AiAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16720663250EABEE0013DF45 /* AiAlgorithm.swift */; };
+		16720664250EABEE0013DF45 /* AIFunstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16720663250EABEE0013DF45 /* AIFunstions.swift */; };
 		1672066A250EB7DD0013DF45 /* GameStateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16720669250EB7DD0013DF45 /* GameStateProtocol.swift */; };
 		1672066C250EB8740013DF45 /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1672066B250EB8740013DF45 /* PlayerState.swift */; };
 		1672066E250EB8800013DF45 /* AiState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1672066D250EB8800013DF45 /* AiState.swift */; };
-		16881A282510930200CDE736 /* BoardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16881A272510930200CDE736 /* BoardProtocol.swift */; };
 		16881A2B2510C06800CDE736 /* ReplayCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16881A2A2510C06800CDE736 /* ReplayCommand.swift */; };
-		16881A2D2510C08300CDE736 /* LogActionEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16881A2C2510C08300CDE736 /* LogActionEnum.swift */; };
 		16881A2F2510D54A00CDE736 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16881A2E2510D54A00CDE736 /* Log.swift */; };
 		16881A312510D89C00CDE736 /* LogCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16881A302510D89C00CDE736 /* LogCommand.swift */; };
 		16881A332510D96A00CDE736 /* CommandInvoker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16881A322510D96A00CDE736 /* CommandInvoker.swift */; };
 		16881A352510D98500CDE736 /* CommandProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16881A342510D98500CDE736 /* CommandProtocol.swift */; };
+		16881A392511384500CDE736 /* CopyingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16881A382511384500CDE736 /* CopyingProtocol.swift */; };
+		16881A3B25113B1100CDE736 /* TransactionEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16881A3A25113B1100CDE736 /* TransactionEntry.swift */; };
+		16881A3D25113B6700CDE736 /* OperationCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16881A3C25113B6700CDE736 /* OperationCommand.swift */; };
+		16881A3F25113D7F00CDE736 /* UndoCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16881A3E25113D7F00CDE736 /* UndoCommand.swift */; };
+		16881A412511447B00CDE736 /* README.MD in Resources */ = {isa = PBXBuildFile; fileRef = 16881A402511447B00CDE736 /* README.MD */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,17 +76,20 @@
 		1672065B250EAACB0013DF45 /* PlayerEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEnum.swift; sourceTree = "<group>"; };
 		1672065E250EAAF10013DF45 /* Alias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alias.swift; sourceTree = "<group>"; };
 		16720661250EAB2F0013DF45 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
-		16720663250EABEE0013DF45 /* AiAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiAlgorithm.swift; sourceTree = "<group>"; };
+		16720663250EABEE0013DF45 /* AIFunstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIFunstions.swift; sourceTree = "<group>"; };
 		16720669250EB7DD0013DF45 /* GameStateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStateProtocol.swift; sourceTree = "<group>"; };
 		1672066B250EB8740013DF45 /* PlayerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerState.swift; sourceTree = "<group>"; };
 		1672066D250EB8800013DF45 /* AiState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiState.swift; sourceTree = "<group>"; };
-		16881A272510930200CDE736 /* BoardProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardProtocol.swift; sourceTree = "<group>"; };
 		16881A2A2510C06800CDE736 /* ReplayCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplayCommand.swift; sourceTree = "<group>"; };
-		16881A2C2510C08300CDE736 /* LogActionEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogActionEnum.swift; sourceTree = "<group>"; };
 		16881A2E2510D54A00CDE736 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		16881A302510D89C00CDE736 /* LogCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogCommand.swift; sourceTree = "<group>"; };
 		16881A322510D96A00CDE736 /* CommandInvoker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandInvoker.swift; sourceTree = "<group>"; };
 		16881A342510D98500CDE736 /* CommandProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandProtocol.swift; sourceTree = "<group>"; };
+		16881A382511384500CDE736 /* CopyingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyingProtocol.swift; sourceTree = "<group>"; };
+		16881A3A25113B1100CDE736 /* TransactionEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionEntry.swift; sourceTree = "<group>"; };
+		16881A3C25113B6700CDE736 /* OperationCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationCommand.swift; sourceTree = "<group>"; };
+		16881A3E25113D7F00CDE736 /* UndoCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoCommand.swift; sourceTree = "<group>"; };
+		16881A402511447B00CDE736 /* README.MD */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.MD; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +119,6 @@
 			isa = PBXGroup;
 			children = (
 				166C6CB9250F2D7E004FA6E7 /* StateableVCProtocol.swift */,
-				16881A272510930200CDE736 /* BoardProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -137,11 +142,13 @@
 		16720641250EA7E80013DF45 /* ivanov.igor.gb.architecture.xo */ = {
 			isa = PBXGroup;
 			children = (
+				16881A372511380D00CDE736 /* Prototype */,
+				16881A362511364800CDE736 /* AI */,
 				16881A292510C04B00CDE736 /* Command */,
 				166C6CB8250F2D51004FA6E7 /* Protocol */,
 				16682BD1250F4FEC009B62CF /* Strategy */,
 				16720668250EB72D0013DF45 /* State */,
-				16720660250EAB230013DF45 /* Model */,
+				16720660250EAB230013DF45 /* Board */,
 				1672065D250EAAE00013DF45 /* Constant */,
 				16720656250EA7F40013DF45 /* CG */,
 				16720642250EA7E80013DF45 /* AppDelegate.swift */,
@@ -152,6 +159,7 @@
 				1672064B250EA7EA0013DF45 /* Assets.xcassets */,
 				1672064D250EA7EA0013DF45 /* LaunchScreen.storyboard */,
 				16720650250EA7EA0013DF45 /* Info.plist */,
+				16881A402511447B00CDE736 /* README.MD */,
 			);
 			path = ivanov.igor.gb.architecture.xo;
 			sourceTree = "<group>";
@@ -177,14 +185,13 @@
 			path = Constant;
 			sourceTree = "<group>";
 		};
-		16720660250EAB230013DF45 /* Model */ = {
+		16720660250EAB230013DF45 /* Board */ = {
 			isa = PBXGroup;
 			children = (
 				16720661250EAB2F0013DF45 /* Board.swift */,
 				166CA45C250F9F7E007C67E6 /* BoardBlindly.swift */,
-				16720663250EABEE0013DF45 /* AiAlgorithm.swift */,
 			);
-			path = Model;
+			path = Board;
 			sourceTree = "<group>";
 		};
 		16720668250EB72D0013DF45 /* State */ = {
@@ -205,12 +212,30 @@
 			children = (
 				16881A342510D98500CDE736 /* CommandProtocol.swift */,
 				16881A2E2510D54A00CDE736 /* Log.swift */,
-				16881A2C2510C08300CDE736 /* LogActionEnum.swift */,
 				16881A2A2510C06800CDE736 /* ReplayCommand.swift */,
 				16881A302510D89C00CDE736 /* LogCommand.swift */,
+				16881A3E25113D7F00CDE736 /* UndoCommand.swift */,
+				16881A3C25113B6700CDE736 /* OperationCommand.swift */,
 				16881A322510D96A00CDE736 /* CommandInvoker.swift */,
+				16881A3A25113B1100CDE736 /* TransactionEntry.swift */,
 			);
 			path = Command;
+			sourceTree = "<group>";
+		};
+		16881A362511364800CDE736 /* AI */ = {
+			isa = PBXGroup;
+			children = (
+				16720663250EABEE0013DF45 /* AIFunstions.swift */,
+			);
+			path = AI;
+			sourceTree = "<group>";
+		};
+		16881A372511380D00CDE736 /* Prototype */ = {
+			isa = PBXGroup;
+			children = (
+				16881A382511384500CDE736 /* CopyingProtocol.swift */,
+			);
+			path = Prototype;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +298,7 @@
 			files = (
 				1672064F250EA7EA0013DF45 /* LaunchScreen.storyboard in Resources */,
 				1672064C250EA7EA0013DF45 /* Assets.xcassets in Resources */,
+				16881A412511447B00CDE736 /* README.MD in Resources */,
 				1672064A250EA7E80013DF45 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,20 +317,20 @@
 				1672066A250EB7DD0013DF45 /* GameStateProtocol.swift in Sources */,
 				1672066C250EB8740013DF45 /* PlayerState.swift in Sources */,
 				1672066E250EB8800013DF45 /* AiState.swift in Sources */,
+				16881A3D25113B6700CDE736 /* OperationCommand.swift in Sources */,
 				16682BD3250F5002009B62CF /* GameStrategyProtocol.swift in Sources */,
 				16682BD7250F50C0009B62CF /* GameModeEnum.swift in Sources */,
-				16881A282510930200CDE736 /* BoardProtocol.swift in Sources */,
 				166C6CB7250F27BD004FA6E7 /* GameFinishState.swift in Sources */,
 				166C6CBC250F31F8004FA6E7 /* FinishEnum.swift in Sources */,
 				166CA45B250F9E14007C67E6 /* BlindlyFireState.swift in Sources */,
 				16881A332510D96A00CDE736 /* CommandInvoker.swift in Sources */,
+				16881A3F25113D7F00CDE736 /* UndoCommand.swift in Sources */,
 				16881A2B2510C06800CDE736 /* ReplayCommand.swift in Sources */,
-				16720664250EABEE0013DF45 /* AiAlgorithm.swift in Sources */,
+				16720664250EABEE0013DF45 /* AIFunstions.swift in Sources */,
 				16682BDB250F512F009B62CF /* VersusHumanStrategy.swift in Sources */,
 				16881A312510D89C00CDE736 /* LogCommand.swift in Sources */,
 				16682BD0250F4C2B009B62CF /* MenuViewController.swift in Sources */,
 				166CA45D250F9F7E007C67E6 /* BoardBlindly.swift in Sources */,
-				16881A2D2510C08300CDE736 /* LogActionEnum.swift in Sources */,
 				166CA459250F9D6E007C67E6 /* BlindlyPlaceState.swift in Sources */,
 				16720643250EA7E80013DF45 /* AppDelegate.swift in Sources */,
 				1672065C250EAACB0013DF45 /* PlayerEnum.swift in Sources */,
@@ -313,9 +339,11 @@
 				1672065A250EA8950013DF45 /* BoardView.swift in Sources */,
 				16682BD5250F502C009B62CF /* GameStrategySelector.swift in Sources */,
 				16720658250EA8130013DF45 /* BoardCG.swift in Sources */,
+				16881A392511384500CDE736 /* CopyingProtocol.swift in Sources */,
 				16720645250EA7E80013DF45 /* SceneDelegate.swift in Sources */,
 				16720662250EAB2F0013DF45 /* Board.swift in Sources */,
 				1672065F250EAAF10013DF45 /* Alias.swift in Sources */,
+				16881A3B25113B1100CDE736 /* TransactionEntry.swift in Sources */,
 				16682BDD250F5258009B62CF /* OpponentEnum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

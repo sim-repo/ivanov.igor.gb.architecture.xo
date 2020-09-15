@@ -9,28 +9,43 @@
 import Foundation
 
 
-class BoardBlindly: Board {
+class BoardBlindly: Board, CopyingProtocol {
     
     var firstPlayerPositions: [Move] = []
     var secondPlayerPositions: [Move] = []
     
     
+    required init(_ prototype: BoardBlindly) {
+        self.firstPlayerPositions = prototype.firstPlayerPositions
+        self.secondPlayerPositions = prototype.secondPlayerPositions
+        super.init()
+        self.player = prototype.player
+        self.lastMove = prototype.lastMove
+        self.positions = prototype.positions
+        self.stepNum = prototype.stepNum
+    }
+    
+    override init(positions: [PlayerEnum] = [.E, .E, .E, .E, .E, .E, .E, .E, .E], turn: PlayerEnum = .E, lastMove: Move = -1) {
+        super.init(positions: positions, turn: turn, lastMove: lastMove)
+    }
+    
+    
     override func addMark(at location: Move) {
         stepNum += 1
         switch player {
-            case .X:
-                firstPlayerPositions.append(location)
-            case .O:
-                secondPlayerPositions.append(location)
-            default:
-                break
+        case .X:
+            firstPlayerPositions.append(location)
+        case .O:
+            secondPlayerPositions.append(location)
+        default:
+            break
         }
     }
-
+    
     
     override func canMark(_ location: Move) -> Bool {
         if stepNum < 5 {
-           return !firstPlayerPositions.contains(location)
+            return !firstPlayerPositions.contains(location)
         } else {
             return !secondPlayerPositions.contains(location)
         }
@@ -71,7 +86,6 @@ class BoardBlindly: Board {
                 }
             }
         }
-        
         self.positions = positions
         return positions
     }

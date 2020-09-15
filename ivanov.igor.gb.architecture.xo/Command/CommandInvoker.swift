@@ -16,6 +16,10 @@ class CommandInvoker {
         commands.append(command)
     }
     
+    public func execNow(command: CommandProtocol) {
+        command.exec()
+    }
+    
     public func execAll() {
         commands.forEach {
             $0.exec()

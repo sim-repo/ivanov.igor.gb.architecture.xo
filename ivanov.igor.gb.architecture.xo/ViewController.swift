@@ -62,6 +62,10 @@ class ViewController: UIViewController {
         return selector
     }
     
+    @IBAction func pressUndo(_ sender: Any) {
+         getStateStrategy().didPressUndo()
+    }
+    
     
     @objc func back() {
         navigationController?.popViewController(animated: true)

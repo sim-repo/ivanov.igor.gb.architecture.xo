@@ -13,7 +13,6 @@ class ReplayCommand: CommandProtocol {
     weak var receiver: ViewController?
     private var timer: Timer?
     
-    
     private var tracking: [Log] = []
     private var positions: [PlayerEnum] = [.E, .E, .E, .E, .E, .E, .E, .E, .E]
     private var idxX: Int = -1
@@ -24,6 +23,7 @@ class ReplayCommand: CommandProtocol {
         self.receiver = receiver
         self.context = context
     }
+    
     
     func exec() {
         for i in stride(from: 0, through: 4, by: 1) {
@@ -68,7 +68,6 @@ class ReplayCommand: CommandProtocol {
                 positions[log.location] = log.player
                 context?.board.changePlayer(player: player)
                 context?.board.addMark(at: log.location)
-                print(log.location)
                 receiver?.refreshBoard(positions: positions)
                 didPlace = true
             }

@@ -8,11 +8,20 @@
 
 import Foundation
 
-class Board : StrategiableBoardProtocol{
+class Board {
     internal var positions: [PlayerEnum]
-    var player: PlayerEnum = .E
-    var lastMove: Move
-    var stepNum: Int = 0
+    internal var player: PlayerEnum = .E
+    internal var lastMove: Move
+    internal var stepNum: Int = 0
+    
+    public var legalMoves: [Move] {
+        return positions.indices.filter { positions[$0] == .E }
+    }
+    
+    
+    public var isDraw: Bool {
+        return checkWin() == .none && legalMoves.count == 0
+    }
     
     
     init(positions: [PlayerEnum] = [.E, .E, .E, .E, .E, .E, .E, .E, .E], turn: PlayerEnum = .E, lastMove: Move = -1) {
@@ -21,13 +30,7 @@ class Board : StrategiableBoardProtocol{
         self.lastMove = lastMove
     }
     
-    
-    // the legal moves in a position are all of the empty squares
-    var legalMoves: [Move] {
-        return positions.indices.filter { positions[$0] == .E }
-    }
-    
-    
+
     public func checkWin() -> FinishEnum {
         if positions[0] == positions[3] && positions[0] == positions[6] && positions[0] != .E {
             return .col0
@@ -64,7 +67,7 @@ class Board : StrategiableBoardProtocol{
     }
     
     
-    func getWinner() -> PlayerEnum {
+    public func getWinner() -> PlayerEnum {
         let win = checkWin()
         if win != .none {
             switch win {
@@ -86,56 +89,43 @@ class Board : StrategiableBoardProtocol{
     }
     
     
-    var isDraw: Bool {
-        return checkWin() == .none && legalMoves.count == 0
-    }
-    
-    
-    
-    // location can be 0-8, indicating where to move
-    // return a new board with the move played
-    func move(_ location: Move) -> Board {
+    public func move(_ location: Move) -> Board {
         var tempPosition = positions
         tempPosition[location] = player
         return Board(positions: tempPosition, turn: player.opposite, lastMove: location)
     }
     
     
-    
-    // StrategiableBoardProtocol: 
-    func getStep() -> Int {
+    public func getStep() -> Int {
         return stepNum
     }
     
-    func canMark(_ location: Move) -> Bool {
+    
+    public func canMark(_ location: Move) -> Bool {
         return legalMoves.contains(location)
     }
     
-    func addMark(at location: Move) {
+    
+    public func addMark(at location: Move) {
         positions[location] = self.player
         self.lastMove = location
     }
     
-    func getFinish() -> FinishEnum {
+    
+    public func getFinish() -> FinishEnum {
         if isDraw {
             return .draw
         }
         return checkWin()
     }
     
-    func getPositions() -> [PlayerEnum] {
+    
+    public func getPositions() -> [PlayerEnum] {
         return positions
     }
     
-    func reset() {
-        positions = Array.init(repeating: .E, count: 10)
-    }
-    
-}
-
-
-extension Board: StateableBoardProtocol {
-    func changePlayer(player: PlayerEnum) {
+    public func changePlayer(player: PlayerEnum) {
         self.player = player
     }
+    
 }

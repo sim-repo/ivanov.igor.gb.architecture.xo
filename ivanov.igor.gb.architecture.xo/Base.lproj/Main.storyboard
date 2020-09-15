@@ -78,6 +78,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPk-6f-Rpb">
+                                <rect key="frame" x="332" y="120" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="6Yj-pu-ocE"/>
+                                    <constraint firstAttribute="height" constant="50" id="qYz-2Z-oYz"/>
+                                </constraints>
+                                <state key="normal" title="undo"/>
+                                <connections>
+                                    <action selector="pressUndo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="13G-96-HAl"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Uh-zv-i5Y" customClass="BoardView" customModule="ivanov_igor_gb_architecture_xo" customModuleProvider="target">
                                 <rect key="frame" x="21" y="262" width="372" height="372"/>
                                 <subviews>
@@ -193,6 +204,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6Uh-zv-i5Y" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Nx7-ZH-fqU"/>
+                            <constraint firstItem="GPk-6f-Rpb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="32" id="T8P-A5-Vbl"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GPk-6f-Rpb" secondAttribute="trailing" constant="32" id="Uaf-xj-lzU"/>
                             <constraint firstItem="6Uh-zv-i5Y" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hOf-ZD-9vB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

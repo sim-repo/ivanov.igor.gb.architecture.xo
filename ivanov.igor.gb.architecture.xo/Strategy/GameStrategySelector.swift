@@ -9,16 +9,16 @@
 import Foundation
 
 
-class GameStrategySelector {
+final class GameStrategySelector {
     
     private(set) var strategy: GameStrategyProtocol!
     private(set) var board: Board!
     private(set) var curState: GameStateProtocol!
-    private weak var vc: ViewController!
-    private var commandInvoker: CommandInvoker?
+    private(set) weak var vc: ViewController!
+    private(set) var commandInvoker: CommandInvoker?
     
     
-    func setup(gameModeEnum: GameModeEnum, vc: ViewController) {
+    public func setup(gameModeEnum: GameModeEnum, vc: ViewController) {
         self.vc = vc
 
         switch gameModeEnum {
@@ -33,6 +33,7 @@ class GameStrategySelector {
                 board = BoardBlindly()
                 board.changePlayer(player: .X)
                 commandInvoker = CommandInvoker()
+                commandInvoker?.execNow(command: OperationCommand(board:  board as! BoardBlindly))
         }
     }
     
@@ -47,9 +48,10 @@ class GameStrategySelector {
         }
     }
     
-    public func log(_ location: Move){
+    public func logOperation(_ location: Move){
         let curPlayer = board.player
         commandInvoker?.add(command: LogCommand(playerEnum: curPlayer, location: location))
+        commandInvoker?.execNow(command: OperationCommand(board:  board as! BoardBlindly))
     }
     
     public func isFinish() -> Bool {
@@ -77,8 +79,20 @@ class GameStrategySelector {
         return strategy.getNextStateClass(lastOpponentEnum)
     }
     
-    func tryChangePlayer() {
+    public func tryChangePlayer() {
         let player = strategy.getNextPlayer(board.player)
         board.changePlayer(player: player)
+    }
+    
+    public func didPressUndo() {
+        if let invoker = commandInvoker {
+            invoker.execNow(command: UndoCommand(context: self))
+            return
+        }
+    }
+    
+    public func undo(board: Board) {
+        self.board = board
+        updateBoardView() 
     }
 }
