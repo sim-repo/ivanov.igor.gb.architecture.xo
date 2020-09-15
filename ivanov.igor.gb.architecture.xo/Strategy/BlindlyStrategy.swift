@@ -13,7 +13,7 @@ class BlindlyStrategy: GameStrategyProtocol {
     private unowned var context: GameStrategySelector?
     
     required init(context: GameStrategySelector){
-        let beginningState = BlindlyPlaceState(context: context, lastPlayer: .X)
+        let beginningState = BlindlyPlaceState(context: context)
         self.context = context
         context.setNextState(state: beginningState)
     }
@@ -23,13 +23,14 @@ class BlindlyStrategy: GameStrategyProtocol {
         guard let context = context else {
             fatalError("BlindlyStrategy: getPlayerEnum() context is nil")
         }
-        if context.getStep() == 5 { //switch from .X to player .O
+        if context.board.getStep() == 5 { //switch from .X to player .O
             return .O
         }
         return lastPlayer
     }
     
-    func getStateClass(_ lastOpponentEnum: OpponentEnum) -> GameStateProtocol.Type {
+    
+    func getNextStateClass(_ lastOpponentEnum: OpponentEnum) -> GameStateProtocol.Type {
         return PlayerState.self
     }
 }

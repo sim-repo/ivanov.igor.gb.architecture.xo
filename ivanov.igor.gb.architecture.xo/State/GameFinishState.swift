@@ -10,24 +10,11 @@ import Foundation
 
 class GameFinishState: GameStateProtocol {
     
-    private unowned var context: GameStrategySelector?
-    private var curContext: GameStrategySelector {
-        guard let context = context else { fatalError("") }
-        return context
-    }
-    var lastPlayer: PlayerEnum!
-
-    required init(context: GameStrategySelector, lastPlayer: PlayerEnum) {
-        self.context = context
-        self.lastPlayer = lastPlayer
-        finish()
+    required init(context: GameStrategySelector) {
+        context.doFinish()
     }
     
     func addMark(at location: Int) {
         print("AiState: addMark(): can't handle.")
-    }
-    
-    private func finish() {
-        curContext.doFinish(lastPlayer: lastPlayer)
     }
 }

@@ -10,6 +10,6 @@ import UIKit
 
 
 protocol GameStateProtocol {
-    init(context: GameStrategySelector, lastPlayer: PlayerEnum)
+    init(context: GameStrategySelector)
     func addMark(at location: Int)
 }

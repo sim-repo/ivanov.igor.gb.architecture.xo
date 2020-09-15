@@ -36,6 +36,7 @@
 		1672066A250EB7DD0013DF45 /* GameStateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16720669250EB7DD0013DF45 /* GameStateProtocol.swift */; };
 		1672066C250EB8740013DF45 /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1672066B250EB8740013DF45 /* PlayerState.swift */; };
 		1672066E250EB8800013DF45 /* AiState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1672066D250EB8800013DF45 /* AiState.swift */; };
+		16881A282510930200CDE736 /* BoardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16881A272510930200CDE736 /* BoardProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		16720669250EB7DD0013DF45 /* GameStateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStateProtocol.swift; sourceTree = "<group>"; };
 		1672066B250EB8740013DF45 /* PlayerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerState.swift; sourceTree = "<group>"; };
 		1672066D250EB8800013DF45 /* AiState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiState.swift; sourceTree = "<group>"; };
+		16881A272510930200CDE736 /* BoardProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				166C6CB9250F2D7E004FA6E7 /* StateableVCProtocol.swift */,
+				16881A272510930200CDE736 /* BoardProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				1672066E250EB8800013DF45 /* AiState.swift in Sources */,
 				16682BD3250F5002009B62CF /* GameStrategyProtocol.swift in Sources */,
 				16682BD7250F50C0009B62CF /* GameModeEnum.swift in Sources */,
+				16881A282510930200CDE736 /* BoardProtocol.swift in Sources */,
 				166C6CB7250F27BD004FA6E7 /* GameFinishState.swift in Sources */,
 				166C6CBC250F31F8004FA6E7 /* FinishEnum.swift in Sources */,
 				166CA45B250F9E14007C67E6 /* BlindlyFireState.swift in Sources */,

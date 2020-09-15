@@ -11,7 +11,7 @@ import Foundation
 class VersusComputerStrategy: GameStrategyProtocol {
     
     required init(context: GameStrategySelector){
-        let beginningState = PlayerState(context: context, lastPlayer: .X)
+        let beginningState = PlayerState(context: context)
         context.setNextState(state: beginningState)
     }
     
@@ -20,7 +20,7 @@ class VersusComputerStrategy: GameStrategyProtocol {
     }
     
     
-    func getStateClass(_ lastOpponentEnum: OpponentEnum) -> GameStateProtocol.Type {
+    func getNextStateClass(_ lastOpponentEnum: OpponentEnum) -> GameStateProtocol.Type {
         switch lastOpponentEnum {
             case .computer:
                 return PlayerState.self

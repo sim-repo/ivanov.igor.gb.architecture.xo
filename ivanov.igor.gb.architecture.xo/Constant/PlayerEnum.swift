@@ -29,8 +29,8 @@ enum PlayerEnum: String {
             return .X
         case .X:
             return .O
-        default:
-            return .E
+        case .E: // initially
+            return .X
         }
     }
 }

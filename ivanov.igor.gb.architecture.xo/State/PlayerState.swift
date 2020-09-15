@@ -18,14 +18,14 @@ class PlayerState: GameStateProtocol {
     }
     
     private var timer: Timer?
-    private var curPlayer: PlayerEnum!
-    
-    required init(context: GameStrategySelector, lastPlayer: PlayerEnum) {
+
+    required init(context: GameStrategySelector) {
         self.context = context
-        curPlayer = lastPlayer
     }
     
+    
     func addMark(at location: Int) {
+        curContext.tryChangePlayer()
         curContext.board.addMark(at: location)
         curContext.updateBoardView()
         if curContext.isFinish() {
@@ -36,23 +36,16 @@ class PlayerState: GameStateProtocol {
     }
     
     
-    private func changePlayer(lastPlayer: PlayerEnum) {
-        curPlayer = curContext.getNextPlayer(lastPlayer: lastPlayer)
-        curContext.board.setPlayer(player: curPlayer)
-    }
-    
-    
     @objc private func next() {
-        changePlayer(lastPlayer: curPlayer)
         let clazz = curContext.getStateClass(.human)
-        let state = clazz.init(context: curContext, lastPlayer: curPlayer)
+        let state = clazz.init(context: curContext)
         curContext.setNextState(state: state)
         timer?.invalidate()
     }
     
     
     @objc private func finish() {
-        let finishState = GameFinishState(context: curContext, lastPlayer: curPlayer)
+        let finishState = GameFinishState(context: curContext)
         curContext.setNextState(state: finishState)
         timer?.invalidate()
     }

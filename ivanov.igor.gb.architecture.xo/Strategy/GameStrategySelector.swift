@@ -12,18 +12,13 @@ import Foundation
 class GameStrategySelector {
     
     private(set) var strategy: GameStrategyProtocol!
-    
-    private var gameModeEnum: GameModeEnum!
-    
     private(set) var board: Board!
-    
     private(set) var curState: GameStateProtocol!
-    weak var vc: ViewController?
+    private weak var vc: ViewController?
     
     func setup(gameModeEnum: GameModeEnum, vc: ViewController) {
-        self.gameModeEnum = gameModeEnum
         self.vc = vc
-        
+
         switch gameModeEnum {
             case .versusComputer:
                 strategy = VersusComputerStrategy(context: self)
@@ -34,46 +29,43 @@ class GameStrategySelector {
             case .blindly:
                 strategy = BlindlyStrategy(context: self)
                 board = BoardBlindly()
+                board.changePlayer(player: .X)
         }
     }
     
     
-    func canMark(at location: Int) -> Bool {
+    private func canMark(at location: Int) -> Bool {
         return board.canMark(location)
     }
     
-    func didPressMark(at location: Int) {
+    public func didPressMark(at location: Int) {
         if canMark(at: location) {
             curState.addMark(at: location)
         }
     }
     
-    func getStep() -> Int {
-        return board.getStep()
-    }
-    
-    func isFinish() -> Bool {
+    public func isFinish() -> Bool {
         return board.checkWin() != .none || board.isDraw
     }
     
-    func doFinish(lastPlayer: PlayerEnum) {
-        vc?.finish(finishEnum: board.getFinish(), lastPlayer: lastPlayer)
+    public func doFinish() {
+        vc?.finish(finishEnum: board.getFinish(), lastPlayer: board.getWinner())
     }
     
-    func updateBoardView() {
+    public func updateBoardView() {
         vc?.refreshBoard(positions: board.getPositions())
     }
     
-    func setNextState(state: GameStateProtocol) {
+    public func setNextState(state: GameStateProtocol) {
         self.curState = state
     }
     
-    func getStateClass(_ lastOpponentEnum: OpponentEnum) -> GameStateProtocol.Type {
-        return strategy.getStateClass(lastOpponentEnum)
+    public func getStateClass(_ lastOpponentEnum: OpponentEnum) -> GameStateProtocol.Type {
+        return strategy.getNextStateClass(lastOpponentEnum)
     }
     
-    
-    func getNextPlayer(lastPlayer: PlayerEnum) -> PlayerEnum {
-        return strategy.getNextPlayer(lastPlayer)
+    func tryChangePlayer() {
+        let player = strategy.getNextPlayer(board.player)
+        board.changePlayer(player: player)
     }
 }

@@ -11,7 +11,7 @@ import Foundation
 class VersusHumanStrategy: GameStrategyProtocol {
     
     required init(context: GameStrategySelector){
-        let beginningState = PlayerState(context: context, lastPlayer: .X)
+        let beginningState = PlayerState(context: context)
         context.setNextState(state: beginningState)
     }
     
@@ -19,7 +19,7 @@ class VersusHumanStrategy: GameStrategyProtocol {
         return lastPlayer.getNextPlayer()
     }
     
-    func getStateClass(_ lastOpponentEnum: OpponentEnum) -> GameStateProtocol.Type {
+    func getNextStateClass(_ lastOpponentEnum: OpponentEnum) -> GameStateProtocol.Type {
         return PlayerState.self
     }
 }

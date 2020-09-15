@@ -16,33 +16,25 @@ class BlindlyPlaceState: GameStateProtocol {
         return context
     }
     private var timer: Timer?
-    private var curPlayer: PlayerEnum!
-    
-    required init(context: GameStrategySelector, lastPlayer: PlayerEnum) {
+
+    required init(context: GameStrategySelector) {
         self.context = context
-        curPlayer = lastPlayer
     }
-    
-    private func setPlayer(lastPlayer: PlayerEnum) {
-        curPlayer = curContext.getNextPlayer(lastPlayer: lastPlayer)
-        curContext.board.setPlayer(player: curPlayer)
-    }
-    
+        
     func addMark(at location: Int) {
         guard let board = curContext.board as? BoardBlindly
         else { return }
-        
-        setPlayer(lastPlayer: curPlayer)
-        board.addMark(player: curPlayer, at: location)
+        curContext.tryChangePlayer()
+        board.addMark(at: location)
         curContext.updateBoardView()
-        if curContext.getStep() == 10 {
+        if curContext.board.getStep() == 10 {
             timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.next), userInfo: nil, repeats: false)
         }
     }
     
     
     @objc private func next() {
-        let finishState = BlindlyFireState(context: curContext, lastPlayer: curPlayer)
+        let finishState = BlindlyFireState(context: curContext)
         curContext.setNextState(state: finishState)
         timer?.invalidate()
     }

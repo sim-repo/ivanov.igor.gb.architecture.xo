@@ -16,11 +16,9 @@ class AiState: GameStateProtocol {
         return context
     }
     private var timer: Timer?
-    private var curPlayer: PlayerEnum!
     
-    required init(context: GameStrategySelector, lastPlayer: PlayerEnum) {
+    required init(context: GameStrategySelector) {
         self.context = context
-        curPlayer = lastPlayer
         calcMark()
     }
 
@@ -30,6 +28,7 @@ class AiState: GameStateProtocol {
     
 
     private func calcMark() {
+        curContext.tryChangePlayer()
         let pos = findBestMove(curContext.board)
         curContext.board.addMark(at: pos)
         curContext.updateBoardView()
@@ -40,20 +39,14 @@ class AiState: GameStateProtocol {
         }
     }
     
-    private func changePlayer(lastPlayer: PlayerEnum) {
-        curPlayer = curContext.getNextPlayer(lastPlayer: lastPlayer)
-        curContext.board.setPlayer(player: curPlayer)
-    }
-    
     @objc private func next() {
-        changePlayer(lastPlayer: curPlayer)
-        curContext.setNextState(state: PlayerState(context: curContext, lastPlayer: curPlayer))
+        curContext.setNextState(state: PlayerState(context: curContext))
         timer?.invalidate()
     }
     
     
     @objc private func finish() {
-        let finishState = GameFinishState(context: curContext, lastPlayer: curPlayer)
+        let finishState = GameFinishState(context: curContext)
         curContext.setNextState(state: finishState)
         timer?.invalidate()
     }

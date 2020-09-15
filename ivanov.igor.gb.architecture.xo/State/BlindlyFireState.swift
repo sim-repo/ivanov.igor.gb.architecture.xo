@@ -10,21 +10,11 @@ import Foundation
 
 class BlindlyFireState: GameStateProtocol {
     
-    private unowned var context: GameStrategySelector?
-    var lastPlayer: PlayerEnum!
-    
-    required init(context: GameStrategySelector, lastPlayer: PlayerEnum) {
-        self.context = context
-        self.lastPlayer = lastPlayer
-        finish()
+    required init(context: GameStrategySelector) {
+        context.doFinish()
     }
     
     func addMark(at location: Int) {
         print("AiState: addMark(): can't handle.")
-    }
-    
-    private func finish() {
-        guard let context = context else { return }
-        context.doFinish(lastPlayer: context.board.getWinner())
     }
 }

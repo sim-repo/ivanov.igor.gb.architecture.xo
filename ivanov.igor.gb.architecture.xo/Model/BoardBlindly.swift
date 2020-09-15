@@ -15,7 +15,7 @@ class BoardBlindly: Board {
     var secondPlayerPositions: [Move] = []
     
     
-    func addMark(player:PlayerEnum, at location: Move) {
+    override func addMark(at location: Move) {
         stepNum += 1
         switch player {
             case .X:
