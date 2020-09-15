@@ -85,6 +85,7 @@ class Board : StrategiableBoardProtocol{
         return .E
     }
     
+    
     var isDraw: Bool {
         return checkWin() == .none && legalMoves.count == 0
     }
@@ -124,6 +125,10 @@ class Board : StrategiableBoardProtocol{
     
     func getPositions() -> [PlayerEnum] {
         return positions
+    }
+    
+    func reset() {
+        positions = Array.init(repeating: .E, count: 10)
     }
     
 }

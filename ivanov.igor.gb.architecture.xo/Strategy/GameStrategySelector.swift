@@ -14,7 +14,9 @@ class GameStrategySelector {
     private(set) var strategy: GameStrategyProtocol!
     private(set) var board: Board!
     private(set) var curState: GameStateProtocol!
-    private weak var vc: ViewController?
+    private weak var vc: ViewController!
+    private var commandInvoker: CommandInvoker?
+    
     
     func setup(gameModeEnum: GameModeEnum, vc: ViewController) {
         self.vc = vc
@@ -30,6 +32,7 @@ class GameStrategySelector {
                 strategy = BlindlyStrategy(context: self)
                 board = BoardBlindly()
                 board.changePlayer(player: .X)
+                commandInvoker = CommandInvoker()
         }
     }
     
@@ -44,16 +47,26 @@ class GameStrategySelector {
         }
     }
     
+    public func log(_ location: Move){
+        let curPlayer = board.player
+        commandInvoker?.add(command: LogCommand(playerEnum: curPlayer, location: location))
+    }
+    
     public func isFinish() -> Bool {
         return board.checkWin() != .none || board.isDraw
     }
     
     public func doFinish() {
-        vc?.finish(finishEnum: board.getFinish(), lastPlayer: board.getWinner())
+        if let invoker = commandInvoker {
+            invoker.add(command: ReplayCommand(receiver: vc, context: self))
+            invoker.execAll()
+            return
+        }
+        vc.finish(finishEnum: board.getFinish(), lastPlayer: board.getWinner())
     }
     
     public func updateBoardView() {
-        vc?.refreshBoard(positions: board.getPositions())
+        vc.refreshBoard(positions: board.getPositions())
     }
     
     public func setNextState(state: GameStateProtocol) {

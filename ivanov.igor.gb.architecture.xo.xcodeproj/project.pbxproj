@@ -37,6 +37,12 @@
 		1672066C250EB8740013DF45 /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1672066B250EB8740013DF45 /* PlayerState.swift */; };
 		1672066E250EB8800013DF45 /* AiState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1672066D250EB8800013DF45 /* AiState.swift */; };
 		16881A282510930200CDE736 /* BoardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16881A272510930200CDE736 /* BoardProtocol.swift */; };
+		16881A2B2510C06800CDE736 /* ReplayCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16881A2A2510C06800CDE736 /* ReplayCommand.swift */; };
+		16881A2D2510C08300CDE736 /* LogActionEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16881A2C2510C08300CDE736 /* LogActionEnum.swift */; };
+		16881A2F2510D54A00CDE736 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16881A2E2510D54A00CDE736 /* Log.swift */; };
+		16881A312510D89C00CDE736 /* LogCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16881A302510D89C00CDE736 /* LogCommand.swift */; };
+		16881A332510D96A00CDE736 /* CommandInvoker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16881A322510D96A00CDE736 /* CommandInvoker.swift */; };
+		16881A352510D98500CDE736 /* CommandProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16881A342510D98500CDE736 /* CommandProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +78,12 @@
 		1672066B250EB8740013DF45 /* PlayerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerState.swift; sourceTree = "<group>"; };
 		1672066D250EB8800013DF45 /* AiState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiState.swift; sourceTree = "<group>"; };
 		16881A272510930200CDE736 /* BoardProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardProtocol.swift; sourceTree = "<group>"; };
+		16881A2A2510C06800CDE736 /* ReplayCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplayCommand.swift; sourceTree = "<group>"; };
+		16881A2C2510C08300CDE736 /* LogActionEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogActionEnum.swift; sourceTree = "<group>"; };
+		16881A2E2510D54A00CDE736 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		16881A302510D89C00CDE736 /* LogCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogCommand.swift; sourceTree = "<group>"; };
+		16881A322510D96A00CDE736 /* CommandInvoker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandInvoker.swift; sourceTree = "<group>"; };
+		16881A342510D98500CDE736 /* CommandProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +137,7 @@
 		16720641250EA7E80013DF45 /* ivanov.igor.gb.architecture.xo */ = {
 			isa = PBXGroup;
 			children = (
+				16881A292510C04B00CDE736 /* Command */,
 				166C6CB8250F2D51004FA6E7 /* Protocol */,
 				16682BD1250F4FEC009B62CF /* Strategy */,
 				16720668250EB72D0013DF45 /* State */,
@@ -185,6 +198,19 @@
 				166C6CB6250F27BD004FA6E7 /* GameFinishState.swift */,
 			);
 			path = State;
+			sourceTree = "<group>";
+		};
+		16881A292510C04B00CDE736 /* Command */ = {
+			isa = PBXGroup;
+			children = (
+				16881A342510D98500CDE736 /* CommandProtocol.swift */,
+				16881A2E2510D54A00CDE736 /* Log.swift */,
+				16881A2C2510C08300CDE736 /* LogActionEnum.swift */,
+				16881A2A2510C06800CDE736 /* ReplayCommand.swift */,
+				16881A302510D89C00CDE736 /* LogCommand.swift */,
+				16881A322510D96A00CDE736 /* CommandInvoker.swift */,
+			);
+			path = Command;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +286,8 @@
 			files = (
 				16720647250EA7E80013DF45 /* ViewController.swift in Sources */,
 				16682BD9250F5116009B62CF /* VersusComputerStrategy.swift in Sources */,
+				16881A352510D98500CDE736 /* CommandProtocol.swift in Sources */,
+				16881A2F2510D54A00CDE736 /* Log.swift in Sources */,
 				1672066A250EB7DD0013DF45 /* GameStateProtocol.swift in Sources */,
 				1672066C250EB8740013DF45 /* PlayerState.swift in Sources */,
 				1672066E250EB8800013DF45 /* AiState.swift in Sources */,
@@ -269,10 +297,14 @@
 				166C6CB7250F27BD004FA6E7 /* GameFinishState.swift in Sources */,
 				166C6CBC250F31F8004FA6E7 /* FinishEnum.swift in Sources */,
 				166CA45B250F9E14007C67E6 /* BlindlyFireState.swift in Sources */,
+				16881A332510D96A00CDE736 /* CommandInvoker.swift in Sources */,
+				16881A2B2510C06800CDE736 /* ReplayCommand.swift in Sources */,
 				16720664250EABEE0013DF45 /* AiAlgorithm.swift in Sources */,
 				16682BDB250F512F009B62CF /* VersusHumanStrategy.swift in Sources */,
+				16881A312510D89C00CDE736 /* LogCommand.swift in Sources */,
 				16682BD0250F4C2B009B62CF /* MenuViewController.swift in Sources */,
 				166CA45D250F9F7E007C67E6 /* BoardBlindly.swift in Sources */,
+				16881A2D2510C08300CDE736 /* LogActionEnum.swift in Sources */,
 				166CA459250F9D6E007C67E6 /* BlindlyPlaceState.swift in Sources */,
 				16720643250EA7E80013DF45 /* AppDelegate.swift in Sources */,
 				1672065C250EAACB0013DF45 /* PlayerEnum.swift in Sources */,

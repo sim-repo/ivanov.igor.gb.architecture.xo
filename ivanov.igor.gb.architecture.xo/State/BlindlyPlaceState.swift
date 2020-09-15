@@ -26,6 +26,7 @@ class BlindlyPlaceState: GameStateProtocol {
         else { return }
         curContext.tryChangePlayer()
         board.addMark(at: location)
+        curContext.log(location)
         curContext.updateBoardView()
         if curContext.board.getStep() == 10 {
             timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.next), userInfo: nil, repeats: false)
