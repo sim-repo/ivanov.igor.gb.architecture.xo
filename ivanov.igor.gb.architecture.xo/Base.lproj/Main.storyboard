@@ -10,7 +10,7 @@
         <!--Menu View Controller-->
         <scene sceneID="bwR-X8-HnC">
             <objects>
-                <viewController id="ldA-Ih-qTu" customClass="MenuViewController" customModule="ivanov_igor_gb_architecture_xo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="ldA-Ih-qTu" customClass="MenuViewController" customModule="ivanov_igor_gb_architecture_xo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8na-q3-5qz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -73,18 +73,21 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ivanov_igor_gb_architecture_xo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="ViewController" customModule="ivanov_igor_gb_architecture_xo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPk-6f-Rpb">
-                                <rect key="frame" x="332" y="120" width="50" height="50"/>
+                                <rect key="frame" x="293" y="76" width="100" height="30"/>
+                                <color key="backgroundColor" red="0.15425246949999999" green="0.13455325369999999" blue="0.44691079849999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="6Yj-pu-ocE"/>
-                                    <constraint firstAttribute="height" constant="50" id="qYz-2Z-oYz"/>
+                                    <constraint firstAttribute="width" constant="100" id="6Yj-pu-ocE"/>
+                                    <constraint firstAttribute="height" constant="30" id="qYz-2Z-oYz"/>
                                 </constraints>
-                                <state key="normal" title="undo"/>
+                                <state key="normal" title="undo">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="pressUndo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="13G-96-HAl"/>
                                 </connections>
@@ -201,11 +204,11 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6Uh-zv-i5Y" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Nx7-ZH-fqU"/>
                             <constraint firstItem="GPk-6f-Rpb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="32" id="T8P-A5-Vbl"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GPk-6f-Rpb" secondAttribute="trailing" constant="32" id="Uaf-xj-lzU"/>
+                            <constraint firstItem="GPk-6f-Rpb" firstAttribute="trailing" secondItem="6Uh-zv-i5Y" secondAttribute="trailing" id="gMd-gN-NDb"/>
                             <constraint firstItem="6Uh-zv-i5Y" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hOf-ZD-9vB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -231,10 +234,9 @@
         <!--Navigation Controller-->
         <scene sceneID="iMr-yT-w58">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BRU-0e-fk0" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" navigationBarHidden="YES" id="BRU-0e-fk0" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nMt-Bn-hJT">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
