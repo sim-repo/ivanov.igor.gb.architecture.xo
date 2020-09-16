@@ -8,12 +8,20 @@
 
 import UIKit
 
+
+protocol ViewControllerDelegate: class {
+    func refreshBoard(positions: [PlayerEnum])
+    func finish(finishEnum: FinishEnum, lastPlayer: PlayerEnum)
+}
+
+
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var boardView: BoardView!
     
   //  private let board = Board()
-    private var strategySelector: GameStrategySelector?
+    private let gameSession: GameSession = GameSession()
     private var timer: Timer?
     private var stepNum: Int = 1
     
@@ -27,7 +35,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var button6: UIButton!
     @IBOutlet weak var button7: UIButton!
     @IBOutlet weak var button8: UIButton!
-    
     
     
     override func viewDidLoad() {
@@ -50,31 +57,22 @@ class ViewController: UIViewController {
     }
     
     func setup(gameModeEnum: GameModeEnum){
-        self.strategySelector = GameStrategySelector()
-        self.strategySelector?.setup(gameModeEnum: gameModeEnum, vc: self)
+        let strategyFactory = StrategyFactory()
+        let boardFactory = BoardFactory()
+        self.gameSession.setup(gameModeEnum: gameModeEnum, strategyFactory: strategyFactory, boardFactory: boardFactory, vc: self)
     }
     
-    func getStateStrategy() -> GameStrategySelector {
-        guard let selector = strategySelector else {
-            //TODO: throw err
-            fatalError("ViewController: getStateStrategy() - strategySelector is nil")
-        }
-        return selector
-    }
-    
-    @IBAction func pressUndo(_ sender: Any) {
-         getStateStrategy().didPressUndo()
-    }
-    
-    
+
     @objc func back() {
         navigationController?.popViewController(animated: true)
     }
+    
+
 }
 
-//MARK:- Stateable
-extension ViewController: StateableVCProtocol {
-    
+
+//MARK:- delegate
+extension ViewController: ViewControllerDelegate {
     func finish(finishEnum: FinishEnum, lastPlayer: PlayerEnum) {
         boardView.finish(winEnum: finishEnum, playerEnum: lastPlayer)
         timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.back), userInfo: nil, repeats: false)
@@ -88,40 +86,45 @@ extension ViewController: StateableVCProtocol {
 
 //MARK:- button actions
 extension ViewController {
+
+    @IBAction func pressUndo(_ sender: Any) {
+        gameSession.didPressUndo()
+    }
+    
     
     @IBAction func pressCell0(_ sender: Any) {
-        getStateStrategy().didPressMark(at: 0)
+        gameSession.didPressMark(at: 0)
     }
     
     @IBAction func pressCell1(_ sender: Any) {
-        getStateStrategy().didPressMark(at: 1)
+        gameSession.didPressMark(at: 1)
     }
     
     @IBAction func pressCell2(_ sender: Any) {
-        getStateStrategy().didPressMark(at: 2)
+        gameSession.didPressMark(at: 2)
     }
     
     @IBAction func pressCell3(_ sender: Any) {
-        getStateStrategy().didPressMark(at: 3)
+        gameSession.didPressMark(at: 3)
     }
     
     @IBAction func pressCell4(_ sender: Any) {
-        getStateStrategy().didPressMark(at: 4)
+        gameSession.didPressMark(at: 4)
     }
     
     @IBAction func pressCell5(_ sender: Any) {
-        getStateStrategy().didPressMark(at: 5)
+        gameSession.didPressMark(at: 5)
     }
     
     @IBAction func pressCell6(_ sender: Any) {
-        getStateStrategy().didPressMark(at: 6)
+        gameSession.didPressMark(at: 6)
     }
     
     @IBAction func pressCell7(_ sender: Any) {
-        getStateStrategy().didPressMark(at: 7)
+        gameSession.didPressMark(at: 7)
     }
     
     @IBAction func pressCell8(_ sender: Any) {
-        getStateStrategy().didPressMark(at: 8)
+        gameSession.didPressMark(at: 8)
     }
 }

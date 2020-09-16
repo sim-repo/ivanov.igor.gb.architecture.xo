@@ -10,9 +10,9 @@ import Foundation
 
 class BlindlyStrategy: GameStrategyProtocol {
     
-    private unowned var context: GameStrategySelector?
+    private unowned var context: GameSession?
     
-    required init(context: GameStrategySelector){
+    required init(context: GameSession){
         let beginningState = BlindlyPlaceState(context: context)
         self.context = context
         context.setNextState(state: beginningState)

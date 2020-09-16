@@ -9,8 +9,8 @@
 import Foundation
 
 class ReplayCommand: CommandProtocol {
-    weak var context: GameStrategySelector?
-    weak var receiver: ViewController?
+    weak var context: GameSession?
+    weak var receiver: ViewControllerDelegate?
     private var timer: Timer?
     
     private var tracking: [Log] = []
@@ -19,7 +19,7 @@ class ReplayCommand: CommandProtocol {
     private var idxY: Int = -1
     private var player: PlayerEnum = .O
     
-    init(receiver: ViewController, context: GameStrategySelector) {
+    init(receiver: ViewControllerDelegate, context: GameSession) {
         self.receiver = receiver
         self.context = context
     }

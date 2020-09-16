@@ -10,22 +10,20 @@ import Foundation
 
 class BlindlyPlaceState: GameStateProtocol {
     
-    private unowned var context: GameStrategySelector?
-    private var curContext: GameStrategySelector {
+    private unowned var context: GameSession?
+    private var curContext: GameSession {
         guard let context = context else { fatalError("") }
         return context
     }
     private var timer: Timer?
 
-    required init(context: GameStrategySelector) {
+    required init(context: GameSession) {
         self.context = context
     }
         
     func addMark(at location: Int) {
-        guard let board = curContext.board as? BoardBlindly
-        else { return }
         curContext.tryChangePlayer()
-        board.addMark(at: location)
+        curContext.board.addMark(at: location)
         curContext.logOperation(location)
         curContext.updateBoardView()
         if curContext.board.getStep() == 10 {

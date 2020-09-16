@@ -9,4 +9,4 @@
 import Foundation
 
 
-var transactionEntries: [Board] = []
+var transactionEntries: [BoardProtocol] = []

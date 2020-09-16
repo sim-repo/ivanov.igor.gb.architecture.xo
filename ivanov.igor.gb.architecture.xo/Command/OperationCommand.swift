@@ -10,13 +10,14 @@ import Foundation
 
 class OperationCommand: CommandProtocol {
     
-    let board: BoardBlindly
+    let board: Copyable
     
-    init(board: BoardBlindly){
+    init(board: Copyable){
         self.board = board.copy()
     }
     
     public func exec() {
+        guard let board = board as? BoardProtocol else { return }
         transactionEntries.append(board)
     }
 }

@@ -9,31 +9,35 @@
 import Foundation
 
 
-final class GameStrategySelector {
+final class GameSession {
     
     private(set) var strategy: GameStrategyProtocol!
-    private(set) var board: Board!
+    private(set) var board: BoardProtocol!
     private(set) var curState: GameStateProtocol!
-    private(set) weak var vc: ViewController!
+    private(set) weak var vc: ViewControllerDelegate!
     private(set) var commandInvoker: CommandInvoker?
     
     
-    public func setup(gameModeEnum: GameModeEnum, vc: ViewController) {
+    public func setup(gameModeEnum: GameModeEnum,
+                      strategyFactory: StrategyFactory,
+                      boardFactory: BoardFactory,
+                      vc: ViewControllerDelegate) {
         self.vc = vc
 
+        strategy = strategyFactory.create(gameModeEnum: gameModeEnum, gameSession: self)
+        board = boardFactory.create(gameModeEnum: gameModeEnum)
         switch gameModeEnum {
             case .versusComputer:
-                strategy = VersusComputerStrategy(context: self)
-                board = Board()
+              //  board = Board()
+            break
             case .versusHuman:
-                strategy = VersusHumanStrategy(context: self)
-                board = Board()
+                //board = Board()
+            break
             case .blindly:
-                strategy = BlindlyStrategy(context: self)
-                board = BoardBlindly()
+                //board = BoardBlindly()
                 board.changePlayer(player: .X)
                 commandInvoker = CommandInvoker()
-                commandInvoker?.execNow(command: OperationCommand(board:  board as! BoardBlindly))
+                backupOperation(operation: board)
         }
     }
     
@@ -49,10 +53,16 @@ final class GameStrategySelector {
     }
     
     public func logOperation(_ location: Move){
-        let curPlayer = board.player
+        let curPlayer = board.getPlayer()
         commandInvoker?.add(command: LogCommand(playerEnum: curPlayer, location: location))
-        commandInvoker?.execNow(command: OperationCommand(board:  board as! BoardBlindly))
+        backupOperation(operation: board)
     }
+    
+    private func backupOperation(operation: BoardProtocol) {
+        guard let copyable = operation as? Copyable else { return }
+        commandInvoker?.execNow(command: OperationCommand(board: copyable))
+    }
+    
     
     public func isFinish() -> Bool {
         return board.checkWin() != .none || board.isDraw
@@ -80,7 +90,7 @@ final class GameStrategySelector {
     }
     
     public func tryChangePlayer() {
-        let player = strategy.getNextPlayer(board.player)
+        let player = strategy.getNextPlayer(board.getPlayer())
         board.changePlayer(player: player)
     }
     
@@ -91,7 +101,7 @@ final class GameStrategySelector {
         }
     }
     
-    public func undo(board: Board) {
+    public func undo(board: BoardProtocol) {
         self.board = board
         updateBoardView() 
     }

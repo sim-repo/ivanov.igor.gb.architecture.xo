@@ -32,11 +32,11 @@ func minimax(_ board: Board, maximizing: Bool, originalPlayer: PlayerEnum) -> In
 }
 
 
-func findBestMove(_ board: Board) -> Move {
+func findBestMove(_ board: BoardProtocol) -> Move {
     var bestEval = Int.min
     var bestMove = -1
     for move in board.legalMoves {
-        let result = minimax(board.move(move), maximizing: false, originalPlayer: board.player)
+        let result = minimax(board.move(move), maximizing: false, originalPlayer: board.getPlayer())
         if result > bestEval {
             bestEval = result
             bestMove = move

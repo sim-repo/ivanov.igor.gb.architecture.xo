@@ -9,7 +9,7 @@
 import Foundation
 
 protocol GameStrategyProtocol {
-    init(context: GameStrategySelector)
+    init(context: GameSession)
     func getNextPlayer(_ lastPlayer: PlayerEnum) -> PlayerEnum
     func getNextStateClass(_ lastOpponentEnum: OpponentEnum) -> GameStateProtocol.Type
 }

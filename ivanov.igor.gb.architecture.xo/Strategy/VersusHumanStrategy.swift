@@ -10,7 +10,7 @@ import Foundation
 
 class VersusHumanStrategy: GameStrategyProtocol {
     
-    required init(context: GameStrategySelector){
+    required init(context: GameSession){
         let beginningState = PlayerState(context: context)
         context.setNextState(state: beginningState)
     }

@@ -8,7 +8,8 @@
 
 import Foundation
 
-class Board {
+class Board: BoardProtocol {
+    
     internal var positions: [PlayerEnum]
     internal var player: PlayerEnum = .E
     internal var lastMove: Move
@@ -18,11 +19,9 @@ class Board {
         return positions.indices.filter { positions[$0] == .E }
     }
     
-    
     public var isDraw: Bool {
         return checkWin() == .none && legalMoves.count == 0
     }
-    
     
     init(positions: [PlayerEnum] = [.E, .E, .E, .E, .E, .E, .E, .E, .E], turn: PlayerEnum = .E, lastMove: Move = -1) {
         self.positions = positions
@@ -127,5 +126,24 @@ class Board {
     public func changePlayer(player: PlayerEnum) {
         self.player = player
     }
+}
+
+
+// can access from decorators only
+extension Board: DecorableBoardProtocol {
+    func getPlayer() -> PlayerEnum {
+        return player
+    }
     
+    func getLastMove() -> Move {
+        return lastMove
+    }
+    
+    func setStepNum(step: Int) {
+        stepNum = step
+    }
+    
+    func setPositions(_ positions: [PlayerEnum]) {
+        self.positions = positions
+    }
 }

@@ -10,16 +10,16 @@ import Foundation
 
 class PlayerState: GameStateProtocol {
     
-    private unowned var context: GameStrategySelector?
+    private unowned var context: GameSession?
     
-    private var curContext: GameStrategySelector {
+    private var curContext: GameSession {
         guard let context = context else { fatalError("") }
         return context
     }
     
     private var timer: Timer?
 
-    required init(context: GameStrategySelector) {
+    required init(context: GameSession) {
         self.context = context
     }
     

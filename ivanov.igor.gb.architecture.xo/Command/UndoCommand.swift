@@ -10,9 +10,9 @@ import Foundation
 
 class UndoCommand: CommandProtocol {
     
-    let context: GameStrategySelector
+    let context: GameSession
     
-    init(context: GameStrategySelector){
+    init(context: GameSession){
         self.context = context
     }
     

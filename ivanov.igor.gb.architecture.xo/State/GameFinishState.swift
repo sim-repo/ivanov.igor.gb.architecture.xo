@@ -10,7 +10,7 @@ import Foundation
 
 class GameFinishState: GameStateProtocol {
     
-    required init(context: GameStrategySelector) {
+    required init(context: GameSession) {
         context.doFinish()
     }
     

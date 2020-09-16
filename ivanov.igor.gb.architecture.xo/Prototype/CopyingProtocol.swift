@@ -8,7 +8,12 @@
 
 import Foundation
 
-protocol CopyingProtocol {
+protocol Copyable: class {
+    func copy() -> Self
+}
+
+
+protocol CopyingProtocol: Copyable {
     init(_ prototype: Self)
 }
 
