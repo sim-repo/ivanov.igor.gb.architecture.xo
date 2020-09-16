@@ -27,6 +27,7 @@ class PlayerState: GameStateProtocol {
     func addMark(at location: Int) {
         curContext.tryChangePlayer()
         curContext.board.addMark(at: location)
+        curContext.logOperation(location)
         curContext.updateBoardView()
         if curContext.isFinish() {
             timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.finish), userInfo: nil, repeats: false)

@@ -31,6 +31,7 @@ class AiState: GameStateProtocol {
         curContext.tryChangePlayer()
         let pos = findBestMove(curContext.board)
         curContext.board.addMark(at: pos)
+        curContext.logOperation(pos)
         curContext.updateBoardView()
         if curContext.isFinish() {
             timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.finish), userInfo: nil, repeats: false)

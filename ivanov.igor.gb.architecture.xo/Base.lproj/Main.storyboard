@@ -225,6 +225,7 @@
                         <outlet property="button6" destination="hlF-hi-7Ff" id="O4N-ok-dKk"/>
                         <outlet property="button7" destination="DKx-5H-UaF" id="p66-08-sM6"/>
                         <outlet property="button8" destination="TP2-an-5hs" id="rIL-d2-Jql"/>
+                        <outlet property="undoButton" destination="GPk-6f-Rpb" id="0qo-YB-ZcQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

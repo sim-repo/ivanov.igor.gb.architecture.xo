@@ -17,27 +17,22 @@ final class GameSession {
     private(set) weak var vc: ViewControllerDelegate!
     private(set) var commandInvoker: CommandInvoker?
     
-    
-    public func setup(gameModeEnum: GameModeEnum,
-                      strategyFactory: StrategyFactory,
+    public func setup(strategyFactory: StrategyFactory,
                       boardFactory: BoardFactory,
                       vc: ViewControllerDelegate) {
         self.vc = vc
-
-        strategy = strategyFactory.create(gameModeEnum: gameModeEnum, gameSession: self)
-        board = boardFactory.create(gameModeEnum: gameModeEnum)
-        switch gameModeEnum {
+        
+        strategy = strategyFactory.create(gameModeEnum: vc.getGameMode(), gameSession: self)
+        board = boardFactory.create(gameModeEnum: vc.getGameMode())
+        commandInvoker = CommandInvoker()
+        backupOperation(operation: board)
+        switch vc.getGameMode() {
             case .versusComputer:
-              //  board = Board()
             break
             case .versusHuman:
-                //board = Board()
             break
             case .blindly:
-                //board = BoardBlindly()
                 board.changePlayer(player: .X)
-                commandInvoker = CommandInvoker()
-                backupOperation(operation: board)
         }
     }
     
@@ -54,7 +49,7 @@ final class GameSession {
     
     public func logOperation(_ location: Move){
         let curPlayer = board.getPlayer()
-        commandInvoker?.add(command: LogCommand(playerEnum: curPlayer, location: location))
+        commandInvoker?.execNow(command: LogCommand(playerEnum: curPlayer, location: location))
         backupOperation(operation: board)
     }
     
@@ -69,11 +64,12 @@ final class GameSession {
     }
     
     public func doFinish() {
-        if let invoker = commandInvoker {
-            invoker.add(command: ReplayCommand(receiver: vc, context: self))
-            invoker.execAll()
-            return
-        }
+        if vc.getGameMode() == .blindly,
+           let invoker = commandInvoker {
+                invoker.add(command: ReplayCommand(receiver: vc, context: self))
+                invoker.execAll()
+                return
+            }
         vc.finish(finishEnum: board.getFinish(), lastPlayer: board.getWinner())
     }
     
@@ -96,6 +92,7 @@ final class GameSession {
     
     public func didPressUndo() {
         if let invoker = commandInvoker {
+            board.setStepNum(step: board.getStep()-1)
             invoker.execNow(command: UndoCommand(context: self))
             return
         }
@@ -103,6 +100,6 @@ final class GameSession {
     
     public func undo(board: BoardProtocol) {
         self.board = board
-        updateBoardView() 
+        updateBoardView()
     }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Board: BoardProtocol {
+class Board: BoardProtocol, CopyingProtocol {
     
     internal var positions: [PlayerEnum]
     internal var player: PlayerEnum = .E
@@ -22,6 +22,14 @@ class Board: BoardProtocol {
     public var isDraw: Bool {
         return checkWin() == .none && legalMoves.count == 0
     }
+    
+    required init(_ prototype: Board) {
+        self.positions = prototype.positions
+        self.player = prototype.player
+        self.lastMove = prototype.lastMove
+        self.stepNum = prototype.stepNum
+    }
+    
     
     init(positions: [PlayerEnum] = [.E, .E, .E, .E, .E, .E, .E, .E, .E], turn: PlayerEnum = .E, lastMove: Move = -1) {
         self.positions = positions

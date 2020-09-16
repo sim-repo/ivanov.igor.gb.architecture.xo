@@ -23,6 +23,7 @@ protocol BoardProtocol {
     func getPositions() -> [PlayerEnum]
     func changePlayer(player: PlayerEnum)
     func getPlayer() -> PlayerEnum
+    func setStepNum(step: Int)
 }
 
 
@@ -32,5 +33,4 @@ protocol DecorableBoardProtocol: BoardProtocol {
     func getPositions() -> [PlayerEnum]
     func setPositions(_ positions: [PlayerEnum])
     func getLastMove() -> Move
-    func setStepNum(step: Int)
 }

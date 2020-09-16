@@ -19,7 +19,6 @@
 		166C6CBC250F31F8004FA6E7 /* FinishEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C6CBB250F31F8004FA6E7 /* FinishEnum.swift */; };
 		166CA459250F9D6E007C67E6 /* BlindlyPlaceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166CA458250F9D6E007C67E6 /* BlindlyPlaceState.swift */; };
 		166CA45B250F9E14007C67E6 /* BlindlyFireState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166CA45A250F9E14007C67E6 /* BlindlyFireState.swift */; };
-		166CA45D250F9F7E007C67E6 /* BoardBlindly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166CA45C250F9F7E007C67E6 /* BoardBlindly.swift */; };
 		16720643250EA7E80013DF45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16720642250EA7E80013DF45 /* AppDelegate.swift */; };
 		16720645250EA7E80013DF45 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16720644250EA7E80013DF45 /* SceneDelegate.swift */; };
 		16720647250EA7E80013DF45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16720646250EA7E80013DF45 /* ViewController.swift */; };
@@ -65,7 +64,6 @@
 		166C6CBB250F31F8004FA6E7 /* FinishEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishEnum.swift; sourceTree = "<group>"; };
 		166CA458250F9D6E007C67E6 /* BlindlyPlaceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlindlyPlaceState.swift; sourceTree = "<group>"; };
 		166CA45A250F9E14007C67E6 /* BlindlyFireState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlindlyFireState.swift; sourceTree = "<group>"; };
-		166CA45C250F9F7E007C67E6 /* BoardBlindly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardBlindly.swift; sourceTree = "<group>"; };
 		1672063F250EA7E80013DF45 /* ivanov.igor.gb.architecture.xo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ivanov.igor.gb.architecture.xo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16720642250EA7E80013DF45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16720644250EA7E80013DF45 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -193,7 +191,6 @@
 				1697DE8125121B4A00E882F3 /* BlindlyBoardDecorator.swift */,
 				1697DE7F25121A3B00E882F3 /* BoardProtocol.swift */,
 				16720661250EAB2F0013DF45 /* Board.swift */,
-				166CA45C250F9F7E007C67E6 /* BoardBlindly.swift */,
 			);
 			path = Board;
 			sourceTree = "<group>";
@@ -336,7 +333,6 @@
 				16881A312510D89C00CDE736 /* LogCommand.swift in Sources */,
 				16682BD0250F4C2B009B62CF /* MenuViewController.swift in Sources */,
 				1697DE842512236400E882F3 /* BoardFactory.swift in Sources */,
-				166CA45D250F9F7E007C67E6 /* BoardBlindly.swift in Sources */,
 				166CA459250F9D6E007C67E6 /* BlindlyPlaceState.swift in Sources */,
 				16720643250EA7E80013DF45 /* AppDelegate.swift in Sources */,
 				1672065C250EAACB0013DF45 /* PlayerEnum.swift in Sources */,

@@ -52,6 +52,10 @@ class BlindlyBoardDecorator: BoardDecoratorProtocol, CopyingProtocol {
         return wrappedBoard.getStep()
     }
     
+    func setStepNum(step: Int) {
+        wrappedBoard.setStepNum(step: step)
+    }
+    
     func canMark(_ location: Move) -> Bool {
         if wrappedBoard.getStep() < 5 {
             return !firstPlayerPositions.contains(location)

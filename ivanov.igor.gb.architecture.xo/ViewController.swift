@@ -10,6 +10,7 @@ import UIKit
 
 
 protocol ViewControllerDelegate: class {
+    func getGameMode() -> GameModeEnum
     func refreshBoard(positions: [PlayerEnum])
     func finish(finishEnum: FinishEnum, lastPlayer: PlayerEnum)
 }
@@ -19,11 +20,13 @@ protocol ViewControllerDelegate: class {
 class ViewController: UIViewController {
     
     @IBOutlet weak var boardView: BoardView!
+    @IBOutlet weak var undoButton: UIButton!
     
-  //  private let board = Board()
+    //  private let board = Board()
     private let gameSession: GameSession = GameSession()
     private var timer: Timer?
     private var stepNum: Int = 1
+    var gameMode: GameModeEnum!
     
     
     @IBOutlet weak var button0: UIButton!
@@ -54,30 +57,38 @@ class ViewController: UIViewController {
         button6.isExclusiveTouch = true
         button7.isExclusiveTouch = true
         button8.isExclusiveTouch = true
+        
+        undoButton.isHidden = gameMode == .versusComputer
     }
     
     func setup(gameModeEnum: GameModeEnum){
+        self.gameMode = gameModeEnum
         let strategyFactory = StrategyFactory()
         let boardFactory = BoardFactory()
-        self.gameSession.setup(gameModeEnum: gameModeEnum, strategyFactory: strategyFactory, boardFactory: boardFactory, vc: self)
+        self.gameSession.setup(strategyFactory: strategyFactory, boardFactory: boardFactory, vc: self)
     }
     
-
+    
     @objc func back() {
         navigationController?.popViewController(animated: true)
     }
     
-
+    
 }
 
 
 //MARK:- delegate
 extension ViewController: ViewControllerDelegate {
+    
+    func getGameMode() -> GameModeEnum {
+        return gameMode
+    }
+    
     func finish(finishEnum: FinishEnum, lastPlayer: PlayerEnum) {
         boardView.finish(winEnum: finishEnum, playerEnum: lastPlayer)
         timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.back), userInfo: nil, repeats: false)
     }
-
+    
     func refreshBoard(positions: [PlayerEnum]){
         boardView.setup(positions: positions)
     }
@@ -86,7 +97,7 @@ extension ViewController: ViewControllerDelegate {
 
 //MARK:- button actions
 extension ViewController {
-
+    
     @IBAction func pressUndo(_ sender: Any) {
         gameSession.didPressUndo()
     }

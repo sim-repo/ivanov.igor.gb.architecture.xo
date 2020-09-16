@@ -17,12 +17,16 @@ class UndoCommand: CommandProtocol {
     }
     
     public func exec() {
-        guard let board = transactionEntries.popLast() else { return }
+        guard var board = transactionEntries.popLast(),
+              let _ = logs.popLast()
+        else { return }
+        
         if transactionEntries.count > 0 {
-            guard let board2 = transactionEntries.last else { return }
-            context.undo(board: board2)
-        } else {
-            context.undo(board: board)
+            board = transactionEntries.last!
         }
+        
+        guard let copyable = board as? Copyable else { return }
+        let copy = copyable.copy()
+        context.undo(board: copy as! BoardProtocol)
     }
 }
